@@ -82,8 +82,11 @@
 </header>
 
 <!-- Hero Section -->
-<section class="h-screen flex items-center justify-center bg-hero-pattern text-white pt-16">
-    <div class="container mx-auto px-6 text-center">
+<section id="hero" class="relative h-screen flex items-center justify-center text-white pt-16 overflow-hidden">
+    <!-- Vanta Background Container -->
+    <div id="vanta-bg" class="absolute inset-0 z-0"></div>
+    <!-- Hero Content -->
+    <div class="relative z-10 container mx-auto px-6 text-center">
         <h1 class="text-5xl md:text-6xl font-extrabold mb-6">Tomorrow's Software Together</h1>
         <p class="text-xl md:text-2xl mb-8">Innovative, scalable, and custom solutions crafted with passion.</p>
         <div class="flex justify-center space-x-4">
@@ -183,5 +186,22 @@
         mobileMenu.classList.toggle('hidden');
     });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.net.min.js"></script>
+<script>
+    VANTA.NET({
+        el: "#vanta-bg",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: 0x3b82f6,       // Lighter blue for network lines
+        backgroundColor: 0x1e40af // Deep blue matching your site's palette
+    });
+</script>
+
 </body>
 </html>
