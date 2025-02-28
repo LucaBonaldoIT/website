@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="robots" content="all">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Luca Bonaldo, Software Engineering Consultant. Specializing in scalable solutions, IoT systems, software architecture, and big data processing.">
     <meta name="keywords" content="Luca Bonaldo, Software Engineer, Software Consultant, IoT, Big Data, Web Development, Software Architecture, Custom Solutions, Full-Stack Developer">
@@ -13,138 +12,176 @@
     <meta property="og:url" content="https://lucabonaldo.dev">
     <meta property="og:type" content="website">
     <title>Luca Bonaldo - Software Engineering Consultant</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1E3A8A',
+                        secondary: '#1D4ED8',
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%)",
+                    }
+                }
+            }
+        }
+    </script>
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Luca Bonaldo",
-        "jobTitle": "Software Engineering Consultant",
-        "description": "Specializing in scalable software solutions, IoT systems, and big data processing.",
-        "url": "https://lucabonaldo.dev",
-        "sameAs": [
-          "https://linkedin.com/in/luca-bonaldo",
-          "https://github.com/lucabonaldoit",
-          "https://x.com/lucabonaldoit"
-        ]
-      }
-    </script>      
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Luca Bonaldo",
+            "jobTitle": "Software Engineering Consultant",
+            "description": "Specializing in scalable software solutions, IoT systems, and big data processing.",
+            "url": "https://lucabonaldo.dev",
+            "sameAs": [
+                "https://linkedin.com/in/luca-bonaldo",
+                "https://github.com/lucabonaldoit",
+                "https://x.com/lucabonaldoit"
+            ]
+        }
+    </script>
 </head>
-<body class="bg-gray-100 text-gray-900">
-    <!-- Header Section -->
-    <header class="bg-white shadow">
-        <div class="container mx-auto px-4 py-6 flex justify-between items-center">
-            <h1 class="text-2xl font-bold">Luca Bonaldo</h1>
-            <nav>
-                <ul class="flex space-x-6">
-                    <li><a href="#about" class="text-gray-700 hover:text-gray-600">About</a></li>
-                    <li><a href="#services" class="text-gray-700 hover:text-gray-600">Services</a></li>
-                    <li><a href="#contact" class="text-gray-700 hover:text-gray-600">Contact</a></li>
-                </ul>
-            </nav>
+<body class="bg-gray-50 text-gray-900 antialiased">
+<!-- Header -->
+<header class="bg-white shadow fixed w-full z-50">
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="#" class="text-2xl font-bold text-primary">Luca Bonaldo</a>
+        <nav class="hidden md:flex space-x-8">
+            <a href="#about" class="text-gray-700 hover:text-secondary transition">About</a>
+            <a href="#services" class="text-gray-700 hover:text-secondary transition">Services</a>
+            <a href="#contact" class="text-gray-700 hover:text-secondary transition">Contact</a>
+        </nav>
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+            <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+                <i class="ti ti-menu-2 text-3xl"></i>
+            </button>
         </div>
-    </header>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow">
+        <nav class="px-6 py-4 space-y-4">
+            <a href="#about" class="block text-gray-700 hover:text-secondary transition">About</a>
+            <a href="#services" class="block text-gray-700 hover:text-secondary transition">Services</a>
+            <a href="#contact" class="block text-gray-700 hover:text-secondary transition">Contact</a>
+        </nav>
+    </div>
+</header>
 
-    <!-- Hero Section -->
-    <section class="bg-gray-600 text-white py-20">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-4xl font-bold">Let's Build Tomorrow's Software Together</h2>
-            <p class="mt-4 text-lg">Delivering high-quality solutions is my standard</p>
-            <div>
-              <a href="#contact" class="mt-6 mx-1 inline-block bg-white text-gray-600 font-bold py-3 px-6 rounded-lg shadow hover:bg-gray-100">Get in Touch</a>
-              <a href="/assets/documents/curriculum.pdf" target="_blank" class="mt-6 mx-1 inline-block bg-white text-gray-600 font-bold py-3 px-6 rounded-lg shadow hover:bg-gray-100">My Curriculum</a>
+<!-- Hero Section -->
+<section class="h-screen flex items-center justify-center bg-hero-pattern text-white pt-16">
+    <div class="container mx-auto px-6 text-center">
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-6">Tomorrow's Software Together</h1>
+        <p class="text-xl md:text-2xl mb-8">Innovative, scalable, and custom solutions crafted with passion.</p>
+        <div class="flex justify-center space-x-4">
+            <a href="#contact" class="bg-white text-primary font-semibold py-3 px-8 rounded shadow hover:bg-gray-100 transition">Get in Touch</a>
+            <a href="/assets/documents/curriculum.pdf" target="_blank" class="bg-transparent border border-white text-white font-semibold py-3 px-8 rounded hover:bg-white hover:text-primary transition">My Curriculum</a>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-primary">About Me</h2>
+            <p class="mt-6 text-lg text-gray-700 max-w-3xl mx-auto">
+                Passionate about technology and problem-solving, I was born in Italy in 2003 and have been immersed in the world of tech since childhood. I thrive on tackling challenges and crafting innovative solutions that drive efficiency and success.
+            </p>
+        </div>
+        <div class="max-w-4xl mx-auto space-y-6 text-gray-700">
+            <p>
+                With a strong foundation in science and formal education in mathematics, physics, chemistry, and biology, I ventured into software engineering at a young age. My journey began with developing mods for video games and evolved into a career marked by projects ranging from standalone applications to complex web systems, embedded software, and APIs.
+            </p>
+            <p>
+                My work is fueled by a desire to continuously learn and improve, both personally and professionally. I am committed to delivering high-quality software solutions that not only meet but exceed expectations.
+            </p>
+            <p>
+                Interested in learning more or collaborating? <a href="#contact" class="font-semibold text-secondary hover:underline">Let's connect</a> and turn ideas into reality.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold text-primary">What I Do</h2>
+        <p class="mt-6 text-lg text-gray-700 max-w-3xl mx-auto">
+            I offer comprehensive, tailored solutions for your business needs. From big data processing to IoT implementations and custom web development, my expertise ensures efficient and scalable outcomes.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+            <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                <h3 class="text-xl font-bold text-secondary mb-2">Big Data Solutions</h3>
+                <p class="text-gray-600">Manage and analyze large datasets with cutting-edge technologies to extract actionable insights.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                <h3 class="text-xl font-bold text-secondary mb-2">IoT Integrations</h3>
+                <p class="text-gray-600">Develop robust IoT systems that connect devices seamlessly for smarter operations.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                <h3 class="text-xl font-bold text-secondary mb-2">Software Architecture</h3>
+                <p class="text-gray-600">Revamp legacy systems with modern architectures for enhanced performance and scalability.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                <h3 class="text-xl font-bold text-secondary mb-2">Web Development</h3>
+                <p class="text-gray-600">Craft responsive, intuitive websites that deliver seamless user experiences.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 overflow-hidden bg-gray-100">
-        <div class="container max-w-screen-lg mx-auto px-4">
-            <div class="text-center mb-12">
-                <h3 class="text-3xl font-bold">About Me</h3>
-                <p class="mt-4 text-left text-gray-700">I <b>love</b> creating and managing complex systems. I was born in Italy in 2003, and since a very young age, I have been in love with <b>technology</b>. I find happiness in every problem I manage to solve, every solution I optimize, and every person I help. Every day, I strive to learn as much as possible to improve both myself and the software I provide.</p>
-                <p class="mt-4 text-left text-gray-700">I have a formal education with strong foundations in mathematics, physics, chemistry, biology, and, more broadly, science. I specialize in software engineering, which I have been practicing for well over a decade. My first experiences in programming began by developing mods for video games. Since then, I have worked on countless projects, such as standalone applications, web applications, embedded software, APIs, frameworks, and more.</p>
-                <p class="mt-4 text-left text-gray-700">If you'd like to learn more about me, feel free to <a class="font-bold" href="#contact">contact me</a>, and we'll schedule a meeting.</p>
-            </div>
+<!-- Contact Section -->
+<section id="contact" class="py-20 bg-white">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold text-primary">Let's Connect</h2>
+        <p class="mt-6 text-lg text-gray-700 max-w-3xl mx-auto">
+            Whether you have a project in mind or simply want to chat about technology, I’d love to hear from you. Reach out through any of the platforms below.
+        </p>
+        <div class="flex justify-center items-center space-x-8 mt-8">
+            <a href="https://linkedin.com/in/luca-bonaldo" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-secondary transition">
+                <i class="ti ti-brand-linkedin text-3xl"></i>
+            </a>
+            <a href="mailto:me@lucabonaldo.dev" class="text-gray-600 hover:text-red-600 transition">
+                <i class="ti ti-mail text-3xl"></i>
+            </a>
+            <a href="https://github.com/lucabonaldoit" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-gray-900 transition">
+                <i class="ti ti-brand-github text-3xl"></i>
+            </a>
+            <a href="https://x.com/lucabonaldoit" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-gray-900 transition">
+                <i class="ti ti-brand-x text-3xl"></i>
+            </a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-10 bg-white">
-        <div class="container mx-auto px-4 text-center">
-            <h3 class="text-3xl font-bold">How can I help you?</h3>
-            <p class="mx-auto text-left mt-4 max-w-screen-lg text-gray-700">I provide tailored, end-to-end solutions designed to meet diverse business needs. Whether you're looking for simple websites or complex, multidisciplinary systems, my expertise ensures high-quality outcomes. Feel free to <a class="font-bold" href="#contact">contact me</a> to explore a solution together that can meet your needs.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-                <div class="p-6 bg-gray-100 rounded-lg shadow">
-                    <h4 class="text-xl font-bold">Big Data Collection and Processing</h4>
-                    <p class="mt-2 text-gray-700">Comprehensive solutions for managing and analyzing large datasets to extract valuable insights.</p>
-                </div>
-                <div class="p-6 bg-gray-100 rounded-lg shadow">
-                    <h4 class="text-xl font-bold">IoT Solutions</h4>
-                    <p class="mt-2 text-gray-700">Design and implementation of Internet of Things systems for various applications.</p>
-                </div>
-                <div class="p-6 bg-gray-100 rounded-lg shadow">
-                    <h4 class="text-xl font-bold">Software Architecture Refactoring</h4>
-                    <p class="mt-2 text-gray-700">Enhancing and modernizing existing systems to improve performance, scalability, and maintainability.</p>
-                </div>
-                <div class="p-6 bg-gray-100 rounded-lg shadow">
-                  <h4 class="text-xl font-bold">Custom Web Development</h4>
-                  <p class="mt-2 text-gray-700">Creation of intuitive and responsive websites tailored to your specific requirements.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Footer -->
+<footer class="bg-gray-800 text-white py-6">
+    <div class="container mx-auto px-6 text-center">
+        <p class="text-sm">&copy; 2025 Luca Bonaldo. All rights reserved.</p>
+    </div>
+</footer>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white">
-      <div class="container mx-auto px-4 text-center">
-          <h3 class="text-3xl font-bold">Let's Connect</h3>
-          <p class="mt-4 text-gray-700">Reach out through any of these platforms - I'd love to hear from you!</p>
-          
-          <div class="flex justify-center items-center space-x-8 mt-8">
-              <!-- LinkedIn -->
-              <a href="https://linkedin.com/in/luca-bonaldo" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 class="text-gray-600 hover:text-blue-600 transition-colors">
-                  <i class="ti ti-brand-linkedin text-3xl"></i>
-              </a>
-  
-              <!-- Gmail -->
-              <a href="mailto:me@lucabonaldo.dev" 
-                 class="text-gray-600 hover:text-red-600 transition-colors">
-                  <i class="ti ti-mail text-3xl"></i>
-              </a>
-  
-              <!-- GitHub -->
-              <a href="https://github.com/lucabonaldoit" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 class="text-gray-600 hover:text-gray-900 transition-colors">
-                  <i class="ti ti-brand-github text-3xl"></i>
-              </a>
-  
-              <!-- X -->
-              <a href="https://x.com/lucabonaldoit" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 class="text-gray-600 hover:text-gray-900 transition-colors">
-                  <i class="ti ti-brand-x text-3xl"></i>
-              </a>
-          </div>
-      </div>
-    </section>
-  
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2025 Luca Bonaldo. All rights reserved.</p>
-        </div>
-    </footer>
+<script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
 </body>
 </html>
