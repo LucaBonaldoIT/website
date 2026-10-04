@@ -18,3 +18,11 @@ Desktop.ini
 *.swp
 *.swo
 *~
+
+# Build and dependencies
+node_modules/
+dist/
+
+# Local tooling
+.claude/
+tmp.*

@@ -1,0 +1,27 @@
+{
+  "name": "lucabonaldo-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal website of Luca Bonaldo, Software Engineering Consultant.",
+  "license": "MIT",
+  "author": "Luca Bonaldo",
+  "homepage": "https://lucabonaldo.dev/",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "p5": "^1.11.13"
+  },
+  "devDependencies": {
+    "prettier": "^3.9.9",
+    "vite": "^8.3.2"
+  }
+}

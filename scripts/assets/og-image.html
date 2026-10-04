@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>og-image</title>
+    <link rel="stylesheet" href="../../src/styles/fonts.css" />
+    <style>
+      :root {
+        --paper: #f5f2ea;
+        --ink: #1a1712;
+        --ink-soft: rgba(26, 23, 18, 0.64);
+        --accent: #b02e0c;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: 'Inter', sans-serif;
+      }
+      .card {
+        position: relative;
+        width: 1200px;
+        height: 630px;
+      }
+      .bar {
+        position: absolute;
+        inset: 0 0 auto 0;
+        height: 14px;
+        background: var(--accent);
+      }
+      #field {
+        position: absolute;
+        top: 14px;
+        right: 0;
+        width: 560px;
+        height: 616px;
+      }
+      .copy {
+        position: absolute;
+        left: 72px;
+        top: 86px;
+        width: 600px;
+      }
+      .overline {
+        font-size: 22px;
+        font-weight: 500;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        margin-bottom: 24px;
+      }
+      h1 {
+        font-family: 'Fraunces', Georgia, serif;
+        font-size: 124px;
+        font-weight: 580;
+        letter-spacing: -0.02em;
+        line-height: 0.92;
+        margin-bottom: 30px;
+      }
+      h1 span {
+        color: var(--accent);
+      }
+      p.lede {
+        font-size: 30px;
+        line-height: 1.45;
+        color: var(--ink-soft);
+        max-width: 560px;
+      }
+      .url {
+        position: absolute;
+        left: 72px;
+        bottom: 46px;
+        font-size: 26px;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="bar"></div>
+      <svg id="field" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"></svg>
+      <div class="copy">
+        <p class="overline">Software Engineer</p>
+        <h1>Luca<br />Bonaldo<span>.</span></h1>
+        <p class="lede">Scalable systems, IoT platforms, big data and software architecture.</p>
+      </div>
+      <p class="url">lucabonaldo.dev</p>
+    </div>
+    <script>
+      // Same polar log/atan2 interference pattern as src/scripts/field.js, one static frame.
+      var W = 560;
+      var H = 616;
+      var cell = 28;
+      var cols = Math.round(W / cell);
+      var rows = Math.round(H / cell);
+      var cw = W / cols;
+      var ch = H / rows;
+      var dia = Math.min(cw, ch) * 0.68;
+      var pu = cols * 0.68;
+      var pv = rows * 0.62;
+      var t = 2.4;
+      var svg = document.getElementById('field');
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      var out = '';
+      for (var i = 0; i < cols; i++) {
+        for (var j = 0; j < rows; j++) {
+          var dx = i - pu;
+          var dy = j - pv;
+          var log = dx === 0 && dy === 0 ? 0 : 6 * Math.log(Math.sqrt(dx * dx + dy * dy));
+          var ang = dx === 0 && dy === 0 ? 0 : 6 * Math.atan2(dy, dx);
+          var a = log - t;
+          var pattern = Math.cos(Math.cos(a) + 2 * Math.cos(ang - t - Math.abs(Math.sin(a))));
+          var r = dia * Math.abs(2 / (1 + Math.exp(-5 * pattern)) - 1);
+          if (r < 0.5) continue;
+          r = Math.min(r, dia * 1.5);
+          var fill = pattern < 0 ? 'rgba(176,46,12,0.92)' : 'rgba(26,23,18,0.86)';
+          out +=
+            '<circle cx="' +
+            (i * cw + cw / 2).toFixed(1) +
+            '" cy="' +
+            (j * ch + ch / 2).toFixed(1) +
+            '" r="' +
+            (r / 2).toFixed(2) +
+            '" fill="' +
+            fill +
+            '"/>';
+        }
+      }
+      svg.innerHTML = out;
+    </script>
+  </body>
+</html>
