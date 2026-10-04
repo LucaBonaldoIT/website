@@ -1,11 +1,15 @@
 {
   "name": "Luca Bonaldo — Software Engineer",
   "short_name": "Luca Bonaldo",
-  "icons": [
-    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
-  ],
-  "theme_color": "#f5f2ea",
+  "description": "Personal website of Luca Bonaldo, software engineer: scalable systems, IoT platforms, big data and software architecture.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
   "background_color": "#f5f2ea",
-  "display": "standalone"
+  "theme_color": "#b02e0c",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
 }

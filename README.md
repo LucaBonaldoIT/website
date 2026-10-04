@@ -21,7 +21,7 @@ src/
 public/             copied verbatim to the site root: icons, manifest, robots.txt,
                     sitemap.xml, CNAME, og-image.png, curriculum PDF
 build.sh            clean production build into dist/ (git-ignored)
-scripts/            og-image.sh regenerates public/og-image.png from assets/og-image.html
+scripts/            og-image.sh and icons.sh regenerate the social card and favicons
 ```
 
 ## Develop
