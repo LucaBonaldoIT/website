@@ -564,6 +564,16 @@ a {
   .edu__period {
     padding-top: 0;
   }
+
+  /* degree / grade sits on its own line under the institution, without the dash */
+  .edu__note {
+    display: block;
+    margin-top: 0.4rem;
+  }
+
+  .edu__dash {
+    display: none;
+  }
 }
 
 /* ==========================================================================
