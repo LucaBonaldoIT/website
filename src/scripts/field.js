@@ -11,6 +11,7 @@
  * tab is hidden; prefers-reduced-motion gets a single static frame.
  */
 import { onReady } from './dom.js';
+import { isDark } from '@lucabonaldo/design';
 
 var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 var finePointer = window.matchMedia('(pointer: fine)');
@@ -20,6 +21,8 @@ var FIELDS = [
     id: 'hero-field',
     ink: [26, 23, 18, 220],
     accent: [176, 46, 12, 235],
+    // the hero sits on the page surface, so it follows the theme
+    dark: { ink: [240, 236, 223, 200], accent: [236, 106, 69, 235] },
     pole: { x: 0.68, y: 0.62 },
     speed: 0.022,
     pointer: true,
@@ -120,6 +123,14 @@ function makeSketch(cfg, host) {
         p.redraw();
       });
 
+      if (cfg.dark) {
+        document.addEventListener('themechange', function () {
+          if (!running()) {
+            p.redraw();
+          }
+        });
+      }
+
       new ResizeObserver(function () {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function () {
@@ -157,6 +168,7 @@ function makeSketch(cfg, host) {
       phase += (phaseTarget - phase) * 0.05;
       var tt = t + phase;
       var pad = dia / 2;
+      var colors = cfg.dark && isDark() ? cfg.dark : cfg;
       for (var i = 0; i < cols; i++) {
         var x = i * cellW + cellW / 2;
         for (var j = 0; j < rows; j++) {
@@ -169,7 +181,7 @@ function makeSketch(cfg, host) {
           if (radius < 0.5) {
             continue;
           }
-          var c = pattern < 0 ? cfg.accent : cfg.ink;
+          var c = pattern < 0 ? colors.accent : colors.ink;
           p.fill(c[0], c[1], c[2], c[3]);
           p.circle(x, j * cellH + cellH / 2, Math.min(radius, dia + pad));
         }

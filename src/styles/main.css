@@ -1,256 +1,41 @@
 /* ==========================================================================
-   lucabonaldo.dev — paper & ink
-   Tokens
+   lucabonaldo.dev — page styles
+   Tokens, base styles, header, links, theme and reveal come from
+   @lucabonaldo/design (paper & ink). This file only holds what is specific
+   to this page, and uses the design system's role tokens.
    ========================================================================== */
 
-:root {
-  /* surfaces */
-  --paper: #f5f2ea;
-  --paper-soft: #eeeade;
-  --ink: #1a1712;
-  --ink-soft: rgba(26, 23, 18, 0.64);
-  --rule: rgba(26, 23, 18, 0.18);
-
-  /* dark (contact) surface counterparts */
-  --paper-on-ink: #f0ecdf;
-  --paper-on-ink-soft: rgba(240, 236, 223, 0.62);
-  --rule-on-ink: rgba(240, 236, 223, 0.22);
-
-  /* accent: vermilion ink */
-  --accent: #b02e0c;
-  --accent-bright: #e0522d; /* on dark surfaces only */
-
-  /* type */
-  --font-display: 'Fraunces', Georgia, serif;
-  --font-text: 'Inter', -apple-system, 'Segoe UI', sans-serif;
-
-  /* layout */
-  --max: 1360px;
-  --gutter: clamp(1.25rem, 4vw, 4rem);
-  --header-h: 3.5rem;
-
-  /* motion */
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --dur: 600ms;
-}
-
-/* ==========================================================================
-   Base
-   ========================================================================== */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html {
-  overflow-x: clip;
-  scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--header-h) + 1rem);
-}
-
-body {
-  margin: 0;
-  overflow-x: clip;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-text);
-  font-size: 1.0625rem;
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--font-display);
-  font-weight: 500;
-  line-height: 1.1;
-  margin: 0;
-  text-wrap: balance;
-}
-
-p {
-  margin: 0 0 1em;
-}
-
-p:last-child {
-  margin-bottom: 0;
-}
-
-a {
-  color: inherit;
-}
-
-::selection {
-  background: var(--accent);
-  color: var(--paper);
-}
-
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 1px;
-}
-
-.accent {
-  color: var(--accent);
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-.skip-link {
-  position: fixed;
-  top: 0.5rem;
-  left: 0.5rem;
-  z-index: 100;
-  padding: 0.5rem 0.875rem;
-  background: var(--ink);
-  color: var(--paper);
-  font-size: 0.875rem;
-  text-decoration: none;
-  transform: translateY(-300%);
-}
-
-.skip-link:focus-visible {
-  transform: none;
-}
-
-/* Shared small-caps label */
-.overline,
+/* Small-caps labels, same treatment as .ds-overline */
 .section__index,
 .xp__period,
 .edu__period,
 .practice__tech,
 .hero__facts dt,
 .langs dt {
-  font-size: 0.78rem;
+  font-size: var(--ds-text-xs);
   font-weight: 500;
-  letter-spacing: 0.09em;
+  letter-spacing: var(--ds-tracking-caps);
   text-transform: uppercase;
-}
-
-/* Editorial text link */
-.text-link {
-  display: inline-block;
-  font-weight: 500;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.35em;
-  text-decoration-color: var(--rule);
-  transition:
-    text-decoration-color 180ms var(--ease-out),
-    color 180ms var(--ease-out);
-}
-
-.text-link:hover {
-  color: var(--accent);
-  text-decoration-color: var(--accent);
-  text-decoration-thickness: 2px;
 }
 
 /* ==========================================================================
    Header
    ========================================================================== */
 
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: var(--paper);
-  border-bottom: 1px solid var(--rule);
-}
-
-.site-header__inner {
-  max-width: var(--max);
-  margin-inline: auto;
-  height: var(--header-h);
-  padding-inline: var(--gutter);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.wordmark {
-  font-family: var(--font-display);
-  font-weight: 560;
-  font-size: 1.15rem;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.wordmark__dot {
-  color: var(--accent);
-}
-
-.wordmark__mark {
-  display: none;
-}
-
-.site-nav {
-  display: flex;
-  align-items: center;
-  gap: clamp(0.875rem, 2.5vw, 2rem);
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.site-nav a {
-  text-decoration: none;
-  color: var(--ink-soft);
-  transition: color 160ms var(--ease-out);
-}
-
-.site-nav a:hover {
-  color: var(--accent);
-}
-
+/* CV link: a .ds-button kept as compact as the nav text around it */
 .site-nav__cv {
-  color: var(--ink) !important;
-  border: 1px solid var(--rule);
+  display: inline;
+  min-height: 0;
   padding: 0.3rem 0.7rem;
-  transition:
-    border-color 160ms var(--ease-out),
-    color 160ms var(--ease-out);
-}
-
-.site-nav__cv:hover {
-  color: var(--accent) !important;
-  border-color: var(--accent);
+  border-radius: 0;
+  line-height: inherit;
 }
 
 @media (max-width: 540px) {
-  .wordmark__full {
-    display: none;
-  }
-
-  .wordmark__mark {
-    display: inline;
-  }
-
-  .site-nav {
-    font-size: 0.8125rem;
-    gap: 0.875rem;
-  }
-
   /* the CV link stays reachable from the contact section,
      and Practice from the hero's "What I do" link */
   .site-nav__cv,
-  .site-nav a[href='#practice'] {
+  .ds-nav a[href='#practice'] {
     display: none;
   }
 }
@@ -262,18 +47,18 @@ a {
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  max-width: var(--max);
+  max-width: var(--ds-max);
   margin-inline: auto;
-  min-height: calc(100svh - var(--header-h));
+  min-height: calc(100svh - var(--ds-header-h));
 }
 
 .hero__copy {
-  padding: clamp(3rem, 9vh, 6.5rem) var(--gutter) clamp(2.5rem, 6vh, 4rem);
+  padding: clamp(3rem, 9vh, 6.5rem) var(--ds-gutter) clamp(2.5rem, 6vh, 4rem);
   align-self: center;
 }
 
-.overline {
-  color: var(--ink-soft);
+.hero .ds-overline {
+  color: var(--ds-text-soft);
   margin-bottom: clamp(1rem, 3vh, 2rem);
 }
 
@@ -288,7 +73,7 @@ a {
 .hero__intro {
   max-width: 34em;
   font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
-  color: var(--ink-soft);
+  color: var(--ds-text-soft);
   margin-bottom: 2.25rem;
 }
 
@@ -302,21 +87,21 @@ a {
 .hero__field {
   position: relative;
   min-height: 38svh;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--ds-line);
 }
 
 .hero__facts {
   grid-column: 1 / -1;
   margin: 0;
-  border-top: 1px solid var(--rule);
-  padding: 1.5rem var(--gutter) 2rem;
+  border-top: 1px solid var(--ds-line);
+  padding: 1.5rem var(--ds-gutter) 2rem;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1.5rem 2rem;
 }
 
 .hero__facts dt {
-  color: var(--accent);
+  color: var(--ds-accent);
   margin-bottom: 0.35rem;
 }
 
@@ -334,7 +119,7 @@ a {
   .hero__field {
     min-height: 0;
     border-top: 0;
-    border-left: 1px solid var(--rule);
+    border-left: 1px solid var(--ds-line);
   }
 }
 
@@ -361,12 +146,8 @@ a {
 
 /* dotted texture fallback when p5 fails to load */
 .field--fallback {
-  background-image: radial-gradient(var(--rule) 1.5px, transparent 1.6px);
+  background-image: radial-gradient(var(--ds-line) 1.5px, transparent 1.6px);
   background-size: 26px 26px;
-}
-
-.contact .field--fallback {
-  background-image: radial-gradient(var(--rule-on-ink) 1.5px, transparent 1.6px);
 }
 
 /* ==========================================================================
@@ -374,17 +155,17 @@ a {
    ========================================================================== */
 
 .section {
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--ds-line);
 }
 
 .section:nth-of-type(even) {
-  background: var(--paper-soft);
+  background: var(--ds-bg-soft);
 }
 
 .section__inner {
-  max-width: var(--max);
+  max-width: var(--ds-max);
   margin-inline: auto;
-  padding: clamp(4rem, 10vh, 7.5rem) var(--gutter);
+  padding: clamp(4rem, 10vh, 7.5rem) var(--ds-gutter);
   display: grid;
   grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
   gap: clamp(2.5rem, 5vw, 6rem);
@@ -393,16 +174,12 @@ a {
 
 .section__head {
   position: sticky;
-  top: calc(var(--header-h) + 2rem);
+  top: calc(var(--ds-header-h) + 2rem);
 }
 
 .section__index {
-  color: var(--accent);
+  color: var(--ds-accent);
   margin-bottom: 0.75rem;
-}
-
-.section__index--dark {
-  color: var(--accent-bright);
 }
 
 .section__head h2 {
@@ -413,7 +190,7 @@ a {
 .section__note {
   margin-top: 1.25rem;
   max-width: 24em;
-  color: var(--ink-soft);
+  color: var(--ds-text-soft);
   font-size: 0.9375rem;
 }
 
@@ -443,7 +220,7 @@ a {
   grid-template-columns: 3.5rem minmax(0, 1fr);
   gap: 1rem;
   padding-block: clamp(1.75rem, 3.5vh, 2.5rem);
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--ds-line);
 }
 
 .practice__row:first-child {
@@ -451,22 +228,22 @@ a {
 }
 
 .practice__num {
-  font-family: var(--font-display);
+  font-family: var(--ds-font-display);
   font-style: italic;
   font-size: 1.5rem;
   line-height: 1.2;
-  color: var(--ink-soft);
-  transition: color 200ms var(--ease-out);
+  color: var(--ds-text-soft);
+  transition: color 200ms var(--ds-ease-out);
 }
 
 .practice__row:hover .practice__num {
-  color: var(--accent);
+  color: var(--ds-accent);
 }
 
 .practice__row h3 {
   font-size: clamp(1.4rem, 2.4vw, 1.85rem);
   margin-bottom: 0.6rem;
-  transition: transform 260ms var(--ease-out);
+  transition: transform 260ms var(--ds-ease-out);
 }
 
 .practice__row:hover h3 {
@@ -475,12 +252,12 @@ a {
 
 .practice__row p {
   max-width: 38em;
-  color: var(--ink-soft);
+  color: var(--ds-text-soft);
 }
 
 .practice__tech {
   margin-top: 0.9rem;
-  color: var(--ink);
+  color: var(--ds-text);
   opacity: 0.75;
 }
 
@@ -501,7 +278,7 @@ a {
   grid-template-columns: 11rem minmax(0, 1fr);
   gap: 1rem 2rem;
   padding-block: clamp(1.75rem, 3.5vh, 2.5rem);
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--ds-line);
 }
 
 .xp__row:first-child {
@@ -510,7 +287,7 @@ a {
 
 .xp__period,
 .edu__period {
-  color: var(--ink-soft);
+  color: var(--ds-text-soft);
   padding-top: 0.5rem;
 }
 
@@ -521,29 +298,29 @@ a {
 
 .xp__role,
 .edu__note {
-  font-family: var(--font-display);
+  font-family: var(--ds-font-display);
   font-style: italic;
   font-weight: 400;
   font-size: 0.72em;
-  color: var(--ink-soft);
+  color: var(--ds-text-soft);
 }
 
 .xp__place {
   font-size: 0.875rem;
-  color: var(--ink-soft);
+  color: var(--ds-text-soft);
   margin-bottom: 0.9rem;
 }
 
 .xp__row p:last-child:not(.project__links),
 .edu__row p:last-child {
   max-width: 40em;
-  color: var(--ink-soft);
+  color: var(--ds-text-soft);
 }
 
 .project__desc {
   margin-top: 0.75rem;
   max-width: 40em;
-  color: var(--ink-soft);
+  color: var(--ds-text-soft);
 }
 
 .project__links {
@@ -581,7 +358,7 @@ a {
    ========================================================================== */
 
 .about__lead {
-  font-family: var(--font-display);
+  font-family: var(--ds-font-display);
   font-size: clamp(1.45rem, 2.6vw, 2rem);
   line-height: 1.3;
   letter-spacing: -0.01em;
@@ -591,14 +368,14 @@ a {
 
 .about__bio > p:not(.about__lead) {
   max-width: 42em;
-  color: var(--ink-soft);
+  color: var(--ds-text-soft);
 }
 
 .about__subhead {
   font-size: 1.35rem;
   margin: clamp(2.5rem, 6vh, 4rem) 0 0.75rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--ds-line);
 }
 
 .edu__row h4 {
@@ -611,14 +388,14 @@ a {
 }
 
 .langs dt {
-  color: var(--accent);
+  color: var(--ds-accent);
   margin-bottom: 0.4rem;
 }
 
 .langs dd {
   margin: 0;
   font-size: 0.9375rem;
-  color: var(--ink-soft);
+  color: var(--ds-text-soft);
   line-height: 1.7;
 }
 
@@ -626,16 +403,15 @@ a {
    Contact (ink surface)
    ========================================================================== */
 
+/* .ds-inverse provides the ink surface and reassigns the role tokens inside */
 .contact {
-  background: var(--ink);
-  color: var(--paper-on-ink);
-  border-top: 1px solid var(--ink);
+  border-top: 1px solid var(--ds-bg);
 }
 
 .contact__inner {
-  max-width: var(--max);
+  max-width: var(--ds-max);
   margin-inline: auto;
-  padding: clamp(4rem, 10vh, 7.5rem) var(--gutter) clamp(3rem, 7vh, 5rem);
+  padding: clamp(4rem, 10vh, 7.5rem) var(--ds-gutter) clamp(3rem, 7vh, 5rem);
   display: grid;
   grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
   gap: clamp(2.5rem, 5vw, 6rem);
@@ -649,41 +425,37 @@ a {
   max-width: 14em;
 }
 
-.contact__title .accent {
-  color: var(--accent-bright);
-}
-
 .contact__note {
-  color: var(--paper-on-ink-soft);
+  color: var(--ds-text-soft);
   max-width: 34em;
   margin-bottom: clamp(2rem, 5vh, 3.5rem);
 }
 
 .contact__email {
   display: inline-block;
-  font-family: var(--font-display);
+  font-family: var(--ds-font-display);
   font-size: clamp(1.5rem, 4.2vw, 3rem);
   letter-spacing: -0.01em;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.25em;
-  text-decoration-color: var(--rule-on-ink);
+  text-decoration-color: var(--ds-line);
   transition:
-    color 200ms var(--ease-out),
-    text-decoration-color 200ms var(--ease-out);
+    color 200ms var(--ds-ease-out),
+    text-decoration-color 200ms var(--ds-ease-out);
   overflow-wrap: anywhere;
 }
 
 .contact__email:hover {
-  color: var(--accent-bright);
-  text-decoration-color: var(--accent-bright);
+  color: var(--ds-accent);
+  text-decoration-color: var(--ds-accent);
 }
 
 .contact__links {
   list-style: none;
   margin: clamp(2rem, 5vh, 3rem) 0 0;
   padding: 1.25rem 0 0;
-  border-top: 1px solid var(--rule-on-ink);
+  border-top: 1px solid var(--ds-line);
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem 2rem;
@@ -693,38 +465,18 @@ a {
 
 .contact__links a {
   text-decoration: none;
-  color: var(--paper-on-ink-soft);
-  transition: color 160ms var(--ease-out);
+  color: var(--ds-text-soft);
+  transition: color 160ms var(--ds-ease-out);
 }
 
 .contact__links a:hover {
-  color: var(--accent-bright);
+  color: var(--ds-accent);
 }
 
 .contact__field {
   position: relative;
   min-height: 300px;
-  border-left: 1px solid var(--rule-on-ink);
-}
-
-.contact :focus-visible {
-  outline-color: var(--accent-bright);
-}
-
-.footer {
-  max-width: var(--max);
-  margin-inline: auto;
-  padding: 1.5rem var(--gutter);
-  border-top: 1px solid var(--rule-on-ink);
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  font-size: 0.8125rem;
-  color: var(--paper-on-ink-soft);
-}
-
-.footer p {
-  margin: 0;
+  border-left: 1px solid var(--ds-line);
 }
 
 @media (max-width: 860px) {
@@ -735,7 +487,7 @@ a {
   .contact__field {
     min-height: 220px;
     border-left: 0;
-    border-top: 1px solid var(--rule-on-ink);
+    border-top: 1px solid var(--ds-line);
   }
 }
 
@@ -743,26 +495,7 @@ a {
    Motion
    ========================================================================== */
 
-@media (prefers-reduced-motion: no-preference) {
-  html.js .reveal {
-    opacity: 0;
-    transform: translateY(14px);
-    transition:
-      opacity var(--dur) var(--ease-out),
-      transform var(--dur) var(--ease-out);
-  }
-
-  html.js .reveal.is-in {
-    opacity: 1;
-    transform: none;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
   .practice__row:hover h3 {
     transform: none;
   }

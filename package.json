@@ -18,6 +18,7 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@lucabonaldo/design": "github:LucaBonaldoIT/design#v0.1.0",
     "p5": "^1.11.13"
   },
   "devDependencies": {
